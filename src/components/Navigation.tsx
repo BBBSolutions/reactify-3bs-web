@@ -1,13 +1,28 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 const Navigation = () => {
   const navItems = [
     { name: "Home", href: "#" },
-    { name: "Services", href: "#services" },
     { name: "About", href: "#about" },
     { name: "Career", href: "#career" },
     { name: "Contact", href: "#contact" }
+  ];
+
+  const serviceItems = [
+    { name: "Business Consulting", href: "#business-consulting" },
+    { name: "Digital Marketing", href: "#digital-marketing" },
+    { name: "Web Development", href: "#web-development" },
+    { name: "Branding & Design", href: "#branding-design" },
+    { name: "SEO Services", href: "#seo-services" },
+    { name: "Social Media Management", href: "#social-media" }
   ];
 
   return (
@@ -36,6 +51,26 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
+              
+              {/* Services Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium flex items-center gap-1">
+                  Services
+                  <ChevronDown className="h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56">
+                  {serviceItems.map((service) => (
+                    <DropdownMenuItem key={service.name} asChild>
+                      <a
+                        href={service.href}
+                        className="w-full cursor-pointer"
+                      >
+                        {service.name}
+                      </a>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
