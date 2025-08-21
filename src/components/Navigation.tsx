@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const navItems = [
@@ -17,12 +18,12 @@ const Navigation = () => {
   ];
 
   const serviceItems = [
-    { name: "Business Consulting", href: "#business-consulting" },
-    { name: "Digital Marketing", href: "#digital-marketing" },
-    { name: "Web Development", href: "#web-development" },
-    { name: "Branding & Design", href: "#branding-design" },
-    { name: "SEO Services", href: "#seo-services" },
-    { name: "Social Media Management", href: "#social-media" }
+    { name: "Business Consulting", href: "/services/business-consulting" },
+    { name: "Digital Marketing", href: "/services/digital-marketing" },
+    { name: "Web Development", href: "/services/web-development" },
+    { name: "Branding & Design", href: "/services/branding-design" },
+    { name: "SEO Services", href: "/services/seo-services" },
+    { name: "Social Media Management", href: "/services/social-media-management" }
   ];
 
   return (
@@ -43,13 +44,13 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-muted-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               
               {/* Services Dropdown */}
@@ -61,12 +62,12 @@ const Navigation = () => {
                 <DropdownMenuContent align="start" className="w-56">
                   {serviceItems.map((service) => (
                     <DropdownMenuItem key={service.name} asChild>
-                      <a
-                        href={service.href}
+                      <Link
+                        to={service.href}
                         className="w-full cursor-pointer"
                       >
                         {service.name}
-                      </a>
+                      </Link>
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
